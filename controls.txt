@@ -1,0 +1,16 @@
+Open Hand - Start Timer/Resume
+Close Hand - Pause Timer
+
+Two Open Hands - New Timer
+Two Close Hands - Remove Timer
+Hand Pointing - Scroll through timers
+
+
+When timer hasn't started yet
+Swipe Left/Right - scroll through preset times
+01:00, 02:00, 03:00, 05:00, 10:00, 20:00, 30:00, 1:00:00, 2:00:00 
+(you can also type in a time)
+
+When timer is started already
+Swipe Left - -30 sec
+Swipe Right - + 30 sec
