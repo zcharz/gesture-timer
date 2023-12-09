@@ -2,5 +2,8 @@
     <div class="card-body">
         <h1> {{currentTime.hours}}h {{currentTime.minutes}}m {{currentTime.seconds}}s</h1>
         <button class="btn btn-dark btn-lg" (click)="toggleTimer()">{{paused?"Start":"Pause"}}</button>
+        <button class="btn btn-dark btn-lg" (click)="reset()">Reset</button>
+        <button *ngIf="isAtInitialTime()" class="btn btn-dark btn-lg" (click)="setTimeLeft()">Set Time: {{getTimeLeft()}}</button>
+        <button *ngIf="isAtInitialTime()" class="btn btn-dark btn-lg" (click)="setTimeRight()">Set Time: {{getTimeRight()}}</button>
     </div>
 </div>
