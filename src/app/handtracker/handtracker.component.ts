@@ -16,11 +16,13 @@ export class HandtrackerComponent implements OnInit {
   500, or one half second is about right, but feel free to experiment with faster
   or slower rates
   */
-  SAMPLERATE: number = 500; 
+  SAMPLERATE: number = 300; 
   
   detectedGesture:string = "None"
   width:string = "400"
   height:string = "400"
+  videoToggle: boolean = true;
+  trackingToggle: boolean = false;
 
   private model: any = null;
   private runInterval: any = null;
@@ -34,6 +36,10 @@ export class HandtrackerComponent implements OnInit {
   };
 
   constructor() {
+  }
+
+  videoToggleClick(){
+    this.videoToggle = !this.videoToggle;
   }
   
   ngOnInit(): void{
@@ -64,12 +70,14 @@ export class HandtrackerComponent implements OnInit {
             this.runDetection();
         }, this.SAMPLERATE);
     }, (err: any) => { console.log(err); });
+    this.trackingToggle = true;
   }
 
   stopDetection(){
     console.log("stopping predictions");
     clearInterval(this.runInterval);
     handTrack.stopVideo(this.video.nativeElement);
+    this.trackingToggle = false;
   }
 
   /*
@@ -97,20 +105,24 @@ export class HandtrackerComponent implements OnInit {
                 
             }
 
-            // These are just a few options! What about one hand open and one hand closed!?
-
             if (openhands > 1) this.detectedGesture = "Two Open Hands";
-            else if(openhands == 1) this.detectedGesture = "Open Hand";
-            
-            if (closedhands > 1) this.detectedGesture = "Two Closed Hands";
-            else if(closedhands == 1) this.detectedGesture = "Closed Hand";
-            
-            if (pointing > 1) this.detectedGesture = "Two Hands Pointing";
-            else if(pointing == 1) this.detectedGesture = "Hand Pointing";
-            
-            if (pinching > 1) this.detectedGesture = "Two Hands Pinching";
-            else if(pinching == 1) this.detectedGesture = "Hand Pinching";
+            else if (openhands == 1 && pointing == 1) this.detectedGesture = "Open Hand and Hand Pointing";
 
+            if(openhands == 1 && pointing == 0 && closedhands == 0) this.detectedGesture = "Open Hand";
+
+            if (closedhands > 1) this.detectedGesture = "Two Closed Hands";
+            else if (closedhands == 1 && pointing == 1) this.detectedGesture = "Closed Hand and Hand Pointing";
+
+            if(closedhands == 1 && pointing == 0 && openhands == 0) this.detectedGesture = "Closed Hand";
+
+            if (closedhands == 0 && openhands == 0 && pointing > 1) this.detectedGesture = "Two Hands Pointing";
+            else if(closedhands == 0 && openhands == 0 && pointing == 1) this.detectedGesture = "Hand Pointing";
+            
+            // if (pinching > 1) this.detectedGesture = "Two Hands Pinching";
+            // if(pinching == 1) this.detectedGesture = "Hand Pinching";
+            // if (openhands == 1 && pinching == 1) this.detectedGesture = "Open Hand and Hand Pinching";
+            // if (closedhands == 1 && pinching == 1) this.detectedGesture = "Closed Hand and Hand Pinching";
+            
             if (openhands == 0 && closedhands == 0 && pointing == 0 && pinching == 0)
                 this.detectedGesture = "None";
 
