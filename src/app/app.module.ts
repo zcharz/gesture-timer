@@ -6,13 +6,15 @@ import { AppComponent } from './app.component';
 import { UiComponent } from './ui/ui.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { HandtrackerComponent } from './handtracker/handtracker.component';
+import { TimerComponent } from './timer/timer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     UiComponent,
     HomePageComponent,
-    HandtrackerComponent
+    HandtrackerComponent,
+    TimerComponent
   ],
   imports: [
     BrowserModule,

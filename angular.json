@@ -103,5 +103,8 @@
       }
     }
   },
-  "defaultProject": "at-alternative-interaction-solution"
+  "defaultProject": "at-alternative-interaction-solution",
+  "cli": {
+    "analytics": false
+  }
 }

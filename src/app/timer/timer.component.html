@@ -1,0 +1,9 @@
+<p>timer works!</p>
+<div class="card">
+    <div class="card-body">
+
+        {{currentTime.hours}}h {{currentTime.minutes}}m : {{currentTime.seconds}}s
+        
+        <button class="btn btn-light" (click)="toggleTimer()">{{paused?"Start":"Pause"}}</button>
+    </div>
+</div>
