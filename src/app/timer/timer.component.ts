@@ -9,7 +9,7 @@ import { min } from 'rxjs';
 })
 export class TimerComponent {
   
-
+  started:boolean;
   paused:boolean;
   currentTime: Time;
   initialTime: Time;
@@ -25,6 +25,7 @@ export class TimerComponent {
   ngOnInit(){
     this.initialTime = new Time(0,5,0);
     this.currentTime = new Time(0,5,0);
+    this.started = false;
     this.paused = true;
     this.defaultTimesPosition = 3;
     console.log(this.paused);
@@ -32,16 +33,14 @@ export class TimerComponent {
     setInterval(function (this:TimerComponent) {
       this.tick();
     }.bind(this), 500)
+
   }
 
   toggleTimer(){
     if(this.paused){ //start timer
-      
       this.endsAt = new Date(Date.now() + (this.currentTime.hours *60*60*1000) + (this.currentTime.minutes * 60 * 1000) + (this.currentTime.seconds * 1000));
       console.log(this.endsAt.toTimeString());
       this.paused = false;
-      
-
     }
     else{ //stop timer
       this.paused = true;
@@ -61,11 +60,23 @@ export class TimerComponent {
       this.currentTime = new Time(hours, minutes, seconds);
       
     }
+    if(this.currentTime.isZero()){
+      this.paused = true;
+    }
   }
 
-  reset(){
-    this.paused = true;
-    this.currentTime = this.initialTime;
+  startOrReset(){
+    if(this.started){ //reset
+      this.started = false;
+      this.paused = true;
+      this.currentTime = this.initialTime;
+    }
+    else{ //start
+      this.started = true;
+      this.paused = false;
+      this.endsAt = new Date(Date.now() + (this.currentTime.hours *60*60*1000) + (this.currentTime.minutes * 60 * 1000) + (this.currentTime.seconds * 1000));
+    }
+
   }
 
   isAtInitialTime(){
@@ -103,6 +114,30 @@ export class TimerComponent {
 
     this.initialTime = Time.DEFAULT_TIMES[this.defaultTimesPosition];
     this.currentTime = Time.DEFAULT_TIMES[this.defaultTimesPosition];
+  }
+
+  sub30Sec(){
+    if(this.endsAt.getTime() - Date.now() < 30*1000){
+      this.paused = true;
+      this.currentTime = new Time(0,0,0);
+    }
+    else{
+      this.endsAt = new Date(this.endsAt.getTime() - 30*1000);
+    }
+
+    this.tick();
+  }
+
+  add30Sec(){
+    if(this.currentTime.isZero()){
+      this.endsAt = new Date(Date.now() + 30*1000);
+      this.currentTime = (new Time(0,0,30))
+    }
+    else{
+      this.endsAt = new Date(this.endsAt.getTime() + 30*1000);
+    } 
+
+    this.tick();
   }
 
 }

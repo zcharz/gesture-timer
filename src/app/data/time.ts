@@ -17,5 +17,8 @@ export class Time {
     public toString(){
         return this.hours + "h " + this.minutes + "m " + this.seconds + "s";
     }
+    public isZero(){
+        return this.hours == 0 && this.minutes == 0 && this.seconds == 0;
+    }
 
 }
