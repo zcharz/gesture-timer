@@ -1,10 +1,10 @@
-Open Hand - Neutral
-Close Hand - Reset
+Open Hand - Start
+Close Hand - Pause
+Pointing - Continue
 
-Two Open Hands - New Timer
-Two Close Hands - Remove Timer
+Two Open Hands - Pause Tracking
+Two Close Hands - Reset
+Two point - Continue Tracking
 
-
-Pointing - Pause
-Open + point -> +30sec
-Close + point -> -30sec
+Open + point -> cycle preset left
+Close + point -> cycle preset right
