@@ -1,10 +1,10 @@
-Open Hand - Start
+Open Hand - Start/Resume
 Close Hand - Pause
-Pointing - Continue
+Pointing - Cycle timers
 
-Two Open Hands - Pause Tracking
+Two Open Hands - Pause Tracking (Lock)
 Two Close Hands - Reset
-Two point - Continue Tracking
+Two point - Continue Tracking (Unlock)
 
 Open + point -> cycle preset left
 Close + point -> cycle preset right
