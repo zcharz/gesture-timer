@@ -2,5 +2,8 @@
 
 <div [innerHTML]="gesture"></div>
 
-<app-timer></app-timer>
+<div *ngFor="let timer of timers">
+    <app-timer></app-timer>
+</div>
 
+<button class="btn btn-dark" (click)="newTimer()">+</button>

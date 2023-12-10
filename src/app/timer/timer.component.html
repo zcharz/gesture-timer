@@ -1,9 +1,11 @@
-<div class="card">
+<div class="card" style="width: 100%; margin: 4em">
     <div class="card-body">
         <h1> {{currentTime.hours}}h {{currentTime.minutes}}m {{currentTime.seconds}}s</h1>
-        <button class="btn btn-dark btn-lg" (click)="toggleTimer()">{{paused?"Start":"Pause"}}</button>
-        <button class="btn btn-dark btn-lg" (click)="reset()">Reset</button>
-        <button *ngIf="isAtInitialTime()" class="btn btn-dark btn-lg" (click)="setTimeLeft()">Set Time: {{getTimeLeft()}}</button>
-        <button *ngIf="isAtInitialTime()" class="btn btn-dark btn-lg" (click)="setTimeRight()">Set Time: {{getTimeRight()}}</button>
+        <button *ngIf="started && !currentTime.isZero()" class="btn btn-dark btn-lg" (click)="toggleTimer()">{{paused?"Resume":"Pause"}}</button>
+        <button class="btn btn-dark btn-lg" (click)="startOrReset()">{{started?"Reset":"Start"}}</button>
+        <button *ngIf="!started" class="btn btn-dark btn-lg" (click)="setTimeLeft()">Set Time: {{getTimeLeft()}}</button>
+        <button *ngIf="!started" class="btn btn-dark btn-lg" (click)="setTimeRight()">Set Time: {{getTimeRight()}}</button>
+        <button *ngIf="started && !currentTime.isZero()" class="btn btn-dark btn-lg" (click)="sub30Sec()">-30</button>
+        <button *ngIf="started" class="btn btn-dark btn-lg" (click)="add30Sec()">+30</button>
     </div>
 </div>
