@@ -4,3 +4,7 @@ button{
 h2{
     margin: 1em;
 }
+input{
+    font-weight: bold;
+    font-size:large;
+}

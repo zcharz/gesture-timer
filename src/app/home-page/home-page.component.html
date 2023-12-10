@@ -1,9 +1,23 @@
 <app-handtracker (onPrediction)="prediction($event)"></app-handtracker>
 
 <div [innerHTML]="gesture"></div>
+<div class="container-fluid ">
+    <div *ngFor="let timer of timers; index as i" class="row justify-content-center mx-auto">
+        <div class="col" [ngStyle]="{'margin-left': i==selected ? '10em' : '1em'}">
+            <app-timer timerId=i ></app-timer>
+        </div>
+    </div>
+    <div class="row ">
+        <div class="col mx-auto">
+            <button *ngIf="timers.length < 3" class="btn btn-dark btn-block" (click)="newTimer()">+</button>
+        </div>
 
-<div *ngFor="let timer of timers">
-    <app-timer></app-timer>
+        <div class="col mx-auto">
+            <button *ngIf="timers.length > 1" class="btn btn-dark btn-block" (click)="removeTimer()">-</button>
+        </div>
+
+    </div>
+    <button class="btn btn-dark btn-block" (click)="selectNext()">select next (remove later)</button>
+    
 </div>
 
-<button class="btn btn-dark" (click)="newTimer()">+</button>
