@@ -9,6 +9,7 @@ import { min } from 'rxjs';
 })
 
 export class TimerComponent {
+  @Input() selected:boolean = false;
 
   started:boolean;
   paused:boolean;

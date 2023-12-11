@@ -10,7 +10,6 @@ export class HomePageComponent implements OnInit {
   gesture: String = "";
   
   timers: TimerComponent[] = [];
-  currentlySelected: TimerComponent;
   selected:number;
 
   public static MAX_TIMERS = 3;
@@ -20,6 +19,7 @@ export class HomePageComponent implements OnInit {
   ngOnInit(): void {
     this.timers.push(new TimerComponent());
     this.selected = 0;
+    this.timers[this.selected].selected = true;
   }
 
   prediction(event: PredictionEvent){
@@ -30,6 +30,7 @@ export class HomePageComponent implements OnInit {
       return;
     }
     this.timers.push(new TimerComponent());
+    this.timers[this.timers.length-1].selected = false;
   }
   removeTimer(){
     if(this.selected == this.timers.length-1){
@@ -39,9 +40,11 @@ export class HomePageComponent implements OnInit {
     
   }
   selectNext(){
+    this.timers[this.selected].selected = false;
     this.selected += 1;
     if(this.selected > this.timers.length-1){
       this.selected = 0;
     }
+    this.timers[this.selected].selected = true;
   }
 }
