@@ -17,6 +17,7 @@
 3. What online resources did you consult when completing this assignment? (list specific URLs)
 https://mdbootstrap.com/docs/b4/jquery/utilities/horizontal-align/
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date
+https://fontawesome.com/search?q=hand&o=r
 
 
 4. What classmates or other individuals did you consult as part of this assignment? What did you discuss?
@@ -32,14 +33,14 @@ None
 
 6. Did you design your app with a particular type of user in mind? If so, whom?
 We designed this app for busy home cooks who could use the assistance of a timer,
-but cannot spare the time or energy to wash their hands between cooking and managing the timer.
+so they don't have to waste time or energy to wash their hands between cooking and managing the timer.
 
 
 7. Describe the two custom gestures you created.
 Two new two handed gestures: open and point, close and point.
-These gestures add time and reduce time from the timer respectively.
+
 
 8. How does your app implement or follow principles of good UI design?
 We provide a thoroughly useful but still simple initial view that provides all necessary context for users.
-We include a pause tracking feature/guesture as an error prevention so that the timer does not receive unintentinoal adjustments.
+We include a locking feature/guesture which stops a timer from being edited as an error prevention so that the timer does not receive unintentinoal adjustments, whether it be an error on the tracker or the user.
 We follow platform conventions as this app is intended for use on tablets/smaller devices, we use large buttons with minimal but clear and concise text.

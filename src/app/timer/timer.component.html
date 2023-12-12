@@ -1,75 +1,73 @@
-<div class="card w-75" style="margin: 1em;" [ngClass]="{'border-dark':selected}">
+<div class="card" [ngClass]="{'highlight':selected}">
     <div class="card-header">
         <input class="form-control" placeholder="New Timer">
     </div>
+
     <div class="card-body">
-        <h1> {{currentTime.hours}}h {{currentTime.minutes}}m {{currentTime.seconds}}s</h1>
 
-        <button *ngIf="!locked && started && !currentTime.isZero()" class="btn btn-dark btn-lg" (click)="toggleTimer()">
-            <div *ngIf="paused">
-                Resume 
-                <div *ngIf="selected">
-                    <i class="fa-solid fa-hand"></i>
+        <div class="row"> 
+            <h1> {{currentTime.hours}}h {{currentTime.minutes}}m {{currentTime.seconds}}s</h1>
+        </div>
+        
+        <div class="col">
+            <button *ngIf="!locked && started && !currentTime.isZero()" style="margin-right: 1em"
+            class="btn btn-dark btn-lg" (click)="toggleTimer()">
+                <div *ngIf="paused">
+                    Resume 
+                    <i *ngIf="selected" class="fa-solid fa-hand"></i>
                 </div>
-            </div>
-            <div *ngIf="!paused">
-                Pause 
-                <div *ngIf="selected">
-                    <i class="fa-solid fa-hand-fist"></i>
+                <div *ngIf="!paused">
+                    Pause 
+                    <i *ngIf="selected" class="fa-solid fa-hand-fist"></i>
                 </div>
-            </div>
-        </button>
-
-        <button *ngIf="!locked" class="btn btn-dark btn-lg" (click)="startOrReset()">
-            <div *ngIf="started">
-                Reset 
-                <div *ngIf="selected">
-                    <i class="fa-solid fa-hand-fist"></i> <i class="fa-solid fa-hand-fist"></i>
+            </button>
+    
+            <button *ngIf="!locked" style="margin-right: 1em"
+            class="btn btn-dark btn-lg" (click)="startOrReset()">
+                <div *ngIf="started">
+                    Reset
+                    <br>
+                    <i *ngIf="selected" class="fa-solid fa-hand-fist"></i>
+                    <i *ngIf="selected"class="fa-solid fa-hand-fist"></i>
                 </div>
-            </div>
-            <div *ngIf="!started">
-                Start 
-                <div *ngIf="selected">
-                    <i class="fa-solid fa-hand"></i>
+                <div *ngIf="!started">
+                    Start
+                    <br>
+                    <i *ngIf="selected" class="fa-solid fa-hand"></i>
                 </div>
-            </div>
-            
-        </button>
-
-        <button *ngIf="!locked && !started" class="btn btn-dark btn-lg" (click)="setTimeLeft()">
-            <div>
-                Set Time: {{getTimeLeft()}} 
-            </div>
-            <div *ngIf="selected">
-                <i class="fa-solid fa-hand"></i><i class="fa-solid fa-hand-point-up"></i>
-            </div>
-        </button>
-
-        <button *ngIf="!locked && !started" class="btn btn-dark btn-lg" (click)="setTimeRight()">
-            <div>
-                Set Time: {{getTimeRight()}} 
-                <div *ngIf="selected">
-                    <i class="fa-solid fa-hand-fist"></i><i class="fa-solid fa-hand-point-up"></i>
+            </button>
+    
+            <button *ngIf="!locked && !started" style="margin-right: 1em"
+            class="btn btn-dark btn-lg" (click)="setTimeLeft()">
+                {{getTimeLeft()}} 
+                <br>
+                <i *ngIf="selected" class="fa-solid fa-hand"></i>
+                <i *ngIf="selected" class="fa-solid fa-hand-point-up"></i>
+            </button>
+    
+            <button *ngIf="!locked && !started" style="margin-right: 1em"
+            class="btn btn-dark btn-lg" (click)="setTimeRight()">
+                {{getTimeRight()}} 
+                <br>
+                <i *ngIf="selected" class="fa-solid fa-hand-fist"></i>
+                <i *ngIf="selected" class="fa-solid fa-hand-point-up"></i>
+            </button>
+    
+            <button class="btn btn-dark btn-lg" (click)="lockUnlock()" style="margin-right: 1em">
+                <div *ngIf="!locked">
+                    Lock 
+                    <br>
+                    <i *ngIf="selected" class="fa-solid fa-hand"></i>
+                    <i *ngIf="selected" class="fa-solid fa-hand"></i>
                 </div>
-            </div>
-        </button>
-
-        <!-- <button *ngIf="!locked && started && !currentTime.isZero()" class="btn btn-dark btn-lg" (click)="sub30Sec()">-30</button>
-        <button *ngIf="!locked && started" class="btn btn-dark btn-lg" (click)="add30Sec()">+30</button> -->
-
-        <button class="btn btn-dark btn-lg" (click)="lockUnlock()">
-            <div *ngIf="!locked">
-                Lock 
-                <div *ngIf="selected">
-                    <i class="fa-solid fa-hand"></i> <i class="fa-solid fa-hand"></i>
+                <div *ngIf="locked">
+                    Unlock 
+                    <br>
+                    <i *ngIf="selected" class="fa-solid fa-hand-point-up"></i>
+                    <i *ngIf="selected" class="fa-solid fa-hand-point-up"></i>
                 </div>
-            </div>
-            <div *ngIf="locked">
-                Unlock 
-                <div *ngIf="selected">
-                    <i class="fa-solid fa-hand-point-up"></i> <i class="fa-solid fa-hand-point-up"></i>
-                </div>
-            </div>
-        </button>
+            </button>
+        </div>
+    
     </div>
 </div>

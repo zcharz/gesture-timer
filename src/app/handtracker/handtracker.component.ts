@@ -41,6 +41,8 @@ export class HandtrackerComponent implements OnInit {
   videoToggleClick(){
     this.videoToggle = !this.videoToggle;
   }
+
+  
   
   ngOnInit(): void{
     handTrack.load(this.modelParams).then((lmodel: any) =>{

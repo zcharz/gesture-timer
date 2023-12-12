@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {Time } from '../data/time';
+
 @Injectable({
   providedIn: 'root'
 })
