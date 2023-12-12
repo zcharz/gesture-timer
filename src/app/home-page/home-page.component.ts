@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChildren, QueryList } from '@angular/core';
 import { PredictionEvent } from '../prediction-event';
 import { TimerComponent } from '../timer/timer.component';
 @Component({
@@ -8,7 +8,6 @@ import { TimerComponent } from '../timer/timer.component';
 })
 export class HomePageComponent implements OnInit {
   gesture: String = "";
-  
   timers: TimerComponent[] = [];
   selected:number;
 
@@ -16,56 +15,63 @@ export class HomePageComponent implements OnInit {
 
   constructor() { }
 
+
+  @ViewChildren(TimerComponent) timerComponents: QueryList<TimerComponent>;
+  timerComponentArray: TimerComponent[];
+
   ngOnInit(): void {
     this.timers.push(new TimerComponent());
     this.selected = 0;
     this.timers[this.selected].selected = true;
   }
 
+  ngAfterViewInit() {
+    this.timerComponentArray = this.timerComponents.toArray();
+  }
+
   prediction(event: PredictionEvent){
     this.gesture = event.getPrediction();
-    console.log(this.gesture);
-    console.log(this.timers[this.selected]);
+    // console.log(this.gesture);
+    this.timerComponentArray = this.timerComponents.toArray();
 
     // start timer
-    if(this.gesture == "Open Hand" && this.timers[this.selected].started == false){
-      this.timers[this.selected].startOrReset();
-      console.log('WHY');
+    if(this.gesture == "Open Hand" && this.timerComponentArray[this.selected].started == false){
+      this.timerComponentArray[this.selected].startOrReset();
     }
     // resume timer
-    else if(this.gesture == "Open Hand" && this.timers[this.selected].started == true){
-      this.timers[this.selected].toggleTimer();
+    else if(this.gesture == "Open Hand" && this.timerComponentArray[this.selected].started == true){
+      this.timerComponentArray[this.selected].toggleTimer();
     }
-    
 
     if (this.gesture == "Closed Hand") {
-      this.timers[this.selected].toggleTimer();
-      console.log('WHY');
+      this.timerComponentArray[this.selected].toggleTimer();
     }
 
     if (this.gesture == "Hand Pointing") {
+      this.timerComponentArray[this.selected].selected = false;
       this.selectNext();
+      this.timerComponentArray[this.selected].selected = true;
     }
 
     if (this.gesture == "Two Open Hands") {
-      this.timers[this.selected].locked = true;
+      this.timerComponentArray[this.selected].locked = true;
     }
 
     if (this.gesture == "Two Hands Pointing") {
-      this.timers[this.selected].locked = false;
+      this.timerComponentArray[this.selected].locked = false;
     }
 
     // reset timer
-    if (this.gesture == "Two Closed Hands" && this.timers[this.selected].started == true) {
-      this.timers[this.selected].startOrReset();
+    if (this.gesture == "Two Closed Hands" && this.timerComponentArray[this.selected].started == true) {
+      this.timerComponentArray[this.selected].startOrReset();
     }
 
     if (this.gesture == "Open Hand and Hand Pointing") {
-      this.timers[this.selected].setTimeLeft();
+      this.timerComponentArray[this.selected].setTimeLeft();
     }
 
     if (this.gesture == "Closed Hand and Hand Pointing") {
-      this.timers[this.selected].setTimeRight();
+      this.timerComponentArray[this.selected].setTimeRight();
     }
   }
 

@@ -18,6 +18,8 @@
 https://mdbootstrap.com/docs/b4/jquery/utilities/horizontal-align/
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date
 https://fontawesome.com/search?q=hand&o=r
+https://angular.io/guide/component-interaction
+https://stackblitz.com/edit/view-child-examples?file=src%2Fapp%2Fview-children%2Fselector-property.component.ts
 
 
 4. What classmates or other individuals did you consult as part of this assignment? What did you discuss?
@@ -38,6 +40,7 @@ so they don't have to waste time or energy to wash their hands between cooking a
 
 7. Describe the two custom gestures you created.
 Two new two handed gestures: open and point, close and point.
+This combination can be done with either hand as the point, open/close. 
 
 
 8. How does your app implement or follow principles of good UI design?

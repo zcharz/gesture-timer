@@ -77,7 +77,7 @@ export class TimerComponent {
     
     if(this.started && this.paused){ //resume
       this.endsAt = new Date(Date.now() + (this.currentTime.hours *60*60*1000) + (this.currentTime.minutes * 60 * 1000) + (this.currentTime.seconds * 1000));
-      console.log(this.endsAt.toTimeString());
+      // console.log(this.endsAt.toTimeString());
       this.paused = false;
     }
     else if (this.started) { //pause
