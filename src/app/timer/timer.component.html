@@ -13,11 +13,13 @@
             <button *ngIf="!locked && started && !currentTime.isZero()" style="margin-right: 1em"
             class="btn btn-dark btn-lg" (click)="toggleTimer()">
                 <div *ngIf="paused">
-                    Resume 
+                    Resume
+                    <br>
                     <i *ngIf="selected" class="fa-solid fa-hand"></i>
                 </div>
                 <div *ngIf="!paused">
-                    Pause 
+                    Pause
+                    <br>
                     <i *ngIf="selected" class="fa-solid fa-hand-fist"></i>
                 </div>
             </button>

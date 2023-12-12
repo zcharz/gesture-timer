@@ -2,6 +2,8 @@ import { Component, ElementRef, OnInit, ViewChild, Output, EventEmitter } from '
 import * as handTrack from 'handtrackjs';
 import { PredictionEvent } from '../prediction-event';
 
+// import 
+
 @Component({
   selector: 'app-handtracker',
   templateUrl: './handtracker.component.html',

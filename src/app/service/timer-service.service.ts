@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Time } from '../data/time';
+import { Time } from '../data/time';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +11,6 @@ export class TimerServiceService {
   constructor() { }
 
   public addTime(d:Date, t:Time){
-    
   }
+
 }
