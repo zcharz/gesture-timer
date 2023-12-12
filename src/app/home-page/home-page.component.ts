@@ -24,21 +24,26 @@ export class HomePageComponent implements OnInit {
 
   prediction(event: PredictionEvent){
     this.gesture = event.getPrediction();
+    console.log(this.gesture);
+    console.log(this.timers[this.selected]);
 
     // start timer
     if(this.gesture == "Open Hand" && this.timers[this.selected].started == false){
       this.timers[this.selected].startOrReset();
+      console.log('WHY');
     }
     // resume timer
     else if(this.gesture == "Open Hand" && this.timers[this.selected].started == true){
       this.timers[this.selected].toggleTimer();
     }
+    
 
     if (this.gesture == "Closed Hand") {
       this.timers[this.selected].toggleTimer();
+      console.log('WHY');
     }
 
-    if (this.gesture == "Pointing") {
+    if (this.gesture == "Hand Pointing") {
       this.selectNext();
     }
 

@@ -45,7 +45,6 @@ export class HandtrackerComponent implements OnInit {
   }
 
   
-  
   ngOnInit(): void{
     handTrack.load(this.modelParams).then((lmodel: any) =>{
         this.model = lmodel;
@@ -100,7 +99,7 @@ export class HandtrackerComponent implements OnInit {
             let pinching = 0;
             for(let p of predictions){
                 //uncomment to view label and position data
-                console.log(p.label + " at X: " + p.bbox[0] + ", Y: " + p.bbox[1] + " at X: " + p.bbox[2] + ", Y: " + p.bbox[3]);
+                // console.log(p.label + " at X: " + p.bbox[0] + ", Y: " + p.bbox[1] + " at X: " + p.bbox[2] + ", Y: " + p.bbox[3]);
                 
                 if(p.label == 'open') openhands++;
                 if(p.label == 'closed') closedhands++;

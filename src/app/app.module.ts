@@ -14,7 +14,7 @@ import { TimerComponent } from './timer/timer.component';
     UiComponent,
     HomePageComponent,
     HandtrackerComponent,
-    TimerComponent
+    TimerComponent,
   ],
   imports: [
     BrowserModule,
