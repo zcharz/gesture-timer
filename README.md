@@ -1,1 +1,1 @@
-handtracking kitchen timer made using ionic, handtrack.js
+handtracking kitchen timer made using angular, ionic, and handtrack.js
